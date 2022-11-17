@@ -1,0 +1,7 @@
+<div class="body">
+    <div class="container">
+        <app-input (inputEvent)="filterList($event)"></app-input>
+        <app-list [filteredList]="filteredList" (clickEvent)="toNormalString($event)"></app-list>
+        <h2 class="choose-text">{{normalString}}</h2>
+    </div>
+</div>

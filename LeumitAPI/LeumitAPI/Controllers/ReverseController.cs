@@ -9,7 +9,7 @@ using Microsoft.Extensions.Logging;
 namespace LeumitAPI.Controllers
 {
     [ApiController]
-    [Route("[api/controller]")]
+    [Route("api/[controller]")]
     public class ReverseController : ControllerBase
     {
         private readonly IReverseService _reverseService;
@@ -18,7 +18,7 @@ namespace LeumitAPI.Controllers
             _reverseService = reverseService;
         }
 
-        [HttpGet("getReversedString")]
+        [HttpGet("getReversedString/{s}")]
         public IActionResult GetReversedString(string s)
         {
             return Ok(_reverseService.ReverseString(s));

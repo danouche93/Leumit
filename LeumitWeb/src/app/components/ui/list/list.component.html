@@ -1,0 +1,4 @@
+<div class="box-container">
+    <div *ngFor="let s of filteredList" (click)="onBoxClick(s.s)" class="box" [ngStyle]="{'background-color' : s.color}">
+        {{s.s}}</div>
+</div>

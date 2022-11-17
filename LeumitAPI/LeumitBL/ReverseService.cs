@@ -11,7 +11,7 @@ namespace LeumitBL
             char[] charArray = s.ToCharArray();
             Array.Reverse(charArray);
             var newString = new string(charArray);
-            return newString.Split(" ").ToList();
+            return newString.Split(" ").Reverse().ToList();
         }
     }
 }

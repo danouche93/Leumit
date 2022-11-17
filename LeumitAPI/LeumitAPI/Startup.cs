@@ -26,7 +26,15 @@ namespace LeumitAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<IReverseService, ReverseService>();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigin",
+                    builder =>
+                    {
+                        builder.WithOrigins("http://localhost:4200").AllowAnyHeader().AllowAnyMethod();
+                    });
+            });
+            services.AddTransient<IReverseService, ReverseService>();
             services.AddControllers();
         }
 
@@ -41,6 +49,8 @@ namespace LeumitAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseAuthorization();
 
